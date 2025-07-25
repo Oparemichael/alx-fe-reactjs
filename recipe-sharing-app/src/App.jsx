@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import RecipeList from './components/RecipeList.jsx'
 import AddRecipeForm from './components/AddRecipeForm.jsx'
+import RecipeDetails from './components/RecipeDetails.jsx'
+import EditRecipeForm from './components/EditRecipeForm.jsx'
 
 
 
@@ -33,11 +36,23 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
 
-      <div className="recipe-container">
-        <h2>Recipe Sharing App</h2>
-        <AddRecipeForm /> 
-        <RecipeList />
+      
+    <Router>
+      <div>
+        <h1>Recipe Sharing App</h1>
+        <Routes>
+          <Route path="/" element={
+            <>
+              <AddRecipeForm />
+              <RecipeList />
+            </>
+          } />
+          <Route path="/recipe/:id" element={<RecipeDetails />} />
+          <Route path="/edit/:id" element={<EditRecipeForm />} />
+        </Routes>
       </div>
+    </Router>
+
     </>
   )
 }
