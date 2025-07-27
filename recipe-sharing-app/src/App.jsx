@@ -46,6 +46,8 @@ function App() {
               <SearchBar />
               <AddRecipeForm />
               <RecipeList />
+              <FavoritesList />
+              <RecommendationsList />
             </>
           } />
           <Route path="/recipe/:id" element={<RecipeDetails />} />
