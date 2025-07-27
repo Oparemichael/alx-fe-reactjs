@@ -43,6 +43,7 @@ function App() {
         <Routes>
           <Route path="/" element={
             <>
+              <SearchBar />
               <AddRecipeForm />
               <RecipeList />
             </>
