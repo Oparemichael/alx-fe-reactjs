@@ -12,7 +12,7 @@ export const useRecipeStore = create((set) => ({
     const { recipes, searchTerm } = get(); 
     const filtered = recipes.filter((recipe) =>
     recipe.title.toLowerCase().includes(searchTerm.toLowerCase())
-),
+);
     set({ filteredRecipes: filtered });
   },
   addRecipe: (newRecipe) => 

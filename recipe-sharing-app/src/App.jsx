@@ -7,6 +7,7 @@ import RecipeList from './components/RecipeList.jsx'
 import AddRecipeForm from './components/AddRecipeForm.jsx'
 import RecipeDetails from './components/RecipeDetails.jsx'
 import EditRecipeForm from './components/EditRecipeForm.jsx'
+import DeleteRecipeButton from './components/DeleteRecipeButton.jsx';
 
 
 
@@ -45,6 +46,10 @@ function App() {
             <>
               <AddRecipeForm />
               <RecipeList />
+              <RecipeDetails />
+              <EditRecipeForm />
+              <AddRecipeForm />
+              <DeleteRecipeButton />
             </>
           } />
           <Route path="/recipe/:id" element={<RecipeDetails />} />
