@@ -44,12 +44,11 @@ function App() {
         <Routes>
           <Route path="/" element={
             <>
+              <SearchBar />
               <AddRecipeForm />
               <RecipeList />
-              <RecipeDetails />
-              <EditRecipeForm />
-              <AddRecipeForm />
-              <DeleteRecipeButton />
+              <FavoritesList />
+              <RecommendationsList />
             </>
           } />
           <Route path="/recipe/:id" element={<RecipeDetails />} />
