@@ -21,32 +21,38 @@ const Search = () => {
             const data = await fetchUserData(username);
             setUserData(data);
         } catch (error) {
-            setError('Looks like we cant find the user');
+            setError('Looks like we can\'t find the user');
         } finally {
             setLoading(false);
         }
     };
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
+        <div className="max-w-md mx-auto p-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
                 <input
                     type="text"
                     value={username}
                     onChange={handleInputChange}
                     placeholder="Enter GitHub username"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md"
                 />
-                <button type="submit">Search</button>
+                <button
+                    type="submit"
+                    className="w-full py-2 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+                >
+                    Search
+                </button>
             </form>
 
-            {loading && <p>Loading...</p>}
-            {error && <p>{error}</p>}
+            {loading && <p className="mt-4 text-center">Loading...</p>}
+            {error && <p className="mt-4 text-center text-red-500">{error}</p>}
             {userData && (
-                <div>
-                    <img src={userData.avatar_url} alt={`${userData.login}'s avatar`} width="100" />
-                    <h2>{userData.name}</h2>
-                    <p>
-                        <a href={userData.html_url} target="_blank" rel="noopener noreferrer">
+                <div className="mt-4 p-4 border border-gray-300 rounded-md">
+                    <img src={userData.avatar_url} alt={`${userData.login}'s avatar`} className="w-24 h-24 rounded-full mx-auto" />
+                    <h2 className="mt-2 text-center text-xl font-semibold">{userData.name}</h2>
+                    <p className="text-center">
+                        <a href={userData.html_url} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-700">
                             View GitHub Profile
                         </a>
                     </p>
@@ -57,4 +63,3 @@ const Search = () => {
 };
 
 export default Search;
- 
