@@ -1,30 +1,11 @@
-import { useState } from 'preact/hooks'
-import preactLogo from './assets/preact.svg'
-import viteLogo from '/vite.svg'
-import './app.css'
+import React from 'react';
 
-export function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+    return (
+        <div>
+            <h1>GitHub User Search App</h1>
+        </div>
+    );
+};
 
-  return (
-    <> 
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} class="logo" alt="Vite logo" />
-        </a>
-        <a href="https://preactjs.com" target="_blank">
-          <img src={preactLogo} class="logo preact" alt="Preact logo" />
-        </a>
-         <h1>Vite + Preact</h1>
-      </div>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Search />} />
-          <Route path="/user/:username" element={<UserDetails />} />
-        </Routes>
-      </Router>
-
-
-    </>
-  )
-}
+export default App;
