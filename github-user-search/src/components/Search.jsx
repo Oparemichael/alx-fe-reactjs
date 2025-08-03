@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { fetchUserData } from '../services/githubService';
+import '../index.css';
 
 const Search = () => {
     const [username, setUsername] = useState('');
@@ -21,38 +22,33 @@ const Search = () => {
             const data = await fetchUserData(username);
             setUserData(data);
         } catch (error) {
-            setError('Looks like we cant find the user');
+            setError('Looks like we can\'t find the user');
         } finally {
             setLoading(false);
         }
     };
 
     return (
-        <div className="max-w-md mx-auto p-4">
-            <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="form-container">
+            <form onSubmit={handleSubmit} className="form">
                 <input
                     type="text"
                     value={username}
                     onChange={handleInputChange}
                     placeholder="Enter GitHub username"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                    className="input-field"
                 />
-                <button
-                    type="submit"
-                    className="w-full py-2 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-600"
-                >
-                    Search
-                </button>
+                <button type="submit" className="submit-button">Search</button>
             </form>
 
-            {loading && <p className="mt-4 text-center">Loading...</p>}
-            {error && <p className="mt-4 text-center text-red-500">{error}</p>}
+            {loading && <p className="loading-message">Loading...</p>}
+            {error && <p className="error-message">{error}</p>}
             {userData && (
-                <div className="mt-4 p-4 border border-gray-300 rounded-md">
-                    <img src={userData.avatar_url} alt={`${userData.login}'s avatar`} className="w-24 h-24 rounded-full mx-auto" />
-                    <h2 className="mt-2 text-center text-xl font-semibold">{userData.name}</h2>
-                    <p className="text-center">
-                        <a href={userData.html_url} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-700">
+                <div className="user-data-container">
+                    <img src={userData.avatar_url} alt={`${userData.login}'s avatar`} className="user-avatar" />
+                    <h2 className="user-name">{userData.name}</h2>
+                    <p>
+                        <a href={userData.html_url} target="_blank" rel="noopener noreferrer" className="profile-link">
                             View GitHub Profile
                         </a>
                     </p>
@@ -63,3 +59,4 @@ const Search = () => {
 };
 
 export default Search;
+ 
