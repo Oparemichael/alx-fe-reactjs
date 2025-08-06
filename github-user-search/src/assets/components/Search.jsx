@@ -35,6 +35,18 @@ const GitHubUserSearch = () => {
             />
             <button type="submit">Search</button>
         </form>
+
+         {loading && <p>Loading...</p>}
+         {error && <p style={{ color: 'red' }}>{error}</p>}
+         {userData && (
+        <div style={{ marginTop: '20px' }}>
+          <img src={userData.avatar_url} alt="Avatar" width="100" />
+          <h3>{userData.name || userData.login}</h3>
+          <a href={userData.html_url} target="_blank" rel="noopener noreferrer">
+            View GitHub Profile
+          </a>
+        </div>
+      )}
         </div>
     )
 };
