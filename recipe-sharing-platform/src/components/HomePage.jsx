@@ -27,7 +27,7 @@ const HomePage = () => {
               className="w-full h-48 sm:h-40 md:h-48 lg:h-64 xl:h-72 object-cover"
             />
             <div className="p-4">
-              <h2 className="text-xl font-semibold text-gray-800 mb-2">{recipe.title}</h2>
+              <h2 className="text-xl font-semibold mt-4 text-gray-800 mb-8">{recipe.title}</h2>
               <p className="text-gray-600 text-sm">{recipe.description}</p>
             </div>
           </Link>
