@@ -3,7 +3,7 @@ import React, { useState} from 'react';
 const AddRecipeForm = () => {
     const [title, setTitle] = useState('');
     const [ingredients, setIngredients] = useState('');
-    const [preparation, setPreparation] = useState('');
+    const [steps, setSteps] = useState('');
     const [errors, setErrors] = useState({});
 
     const handleSubmit = (e) => {
@@ -13,7 +13,7 @@ const AddRecipeForm = () => {
         const newErrors = {};
             if (!title.trim()) newErrors.title = 'Title is required';
             if (!ingredients.trim()) newErrors.ingredients = 'Ingredients are required';
-            if (!preparation.trim()) newErrors.preparation = 'Preparation instructions are required';
+            if (!steps.trim()) newErrors.steps = 'Preparation instructions are required';
             setErrors(newErrors);
 
     };
@@ -47,12 +47,12 @@ const AddRecipeForm = () => {
                     <label className="block text-gray-700 font-semibold mb-2">Preparation Instructions</label>
                     <input 
                         type="text"
-                        value={preparation}
-                        onChange={(e) => setPreparation(e.target.value)}
+                        value={steps}
+                        onChange={(e) => setSteps(e.target.value)}
                         className="w-full p-2 border border-gray-300 rounded"
                         rows="6"
                         />
-                    {errors.preparation && <p className="text-red-500 text-sm mt-1">{errors.preparation}</p>}   
+                    {errors.steps && <p className="text-red-500 text-sm mt-1">{errors.steps}</p>}   
                 </div>
                 <button
                     type="submit"
