@@ -10,11 +10,11 @@ const AddRecipeForm = () => {
         e.preventDefault();
 
         // Validation logic   
-        const newErrors = {};
-            if (!title.trim()) newErrors.title = 'Title is required';
-            if (!ingredients.trim()) newErrors.ingredients = 'Ingredients are required';
-            if (!steps.trim()) newErrors.steps = 'Preparation instructions are required';
-            setErrors(newErrors);
+        const validate = {};
+            if (!title.trim()) validate.title = 'Title is required';
+            if (!ingredients.trim()) validate.ingredients = 'Ingredients are required';
+            if (!steps.trim()) validate.steps = 'Preparation instructions are required';
+            setErrors(validate);
 
     };
 
