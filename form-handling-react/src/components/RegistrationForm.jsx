@@ -31,8 +31,38 @@ const RegistrationForm = () => {
     }
   };
 
+  const validateForm = () => {
+    const newErrors = {};
+
+    // Basic validation logic
+
+    if (!username) {
+      newErrors.username = 'Username is required';
+    }
+
+    if (!email){
+      newErrors.email = 'Email is required';
+    }
+
+    if (!password || password.length < 6) {
+      newErrors.password = 'Password must be at least 6 characters long';
+    }
+
+    if (!firstName) {
+      newErrors.firstName = 'First name is required';
+    }
+
+    if(!surname) {
+      newErrors.surname = 'Surname is required';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (validateForm()) {
     const formData = {
       firstName,
       surname,
@@ -42,6 +72,7 @@ const RegistrationForm = () => {
     };
     console.log('Form submitted:', formData);
     // Here you can add further logic to handle the form submission
+  }
   };
 
   return (
