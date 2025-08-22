@@ -44,7 +44,9 @@ const RegistrationForm = () => {
       newErrors.email = 'Email is required';
     }
 
-    if (!password || password.length < 6) {
+    if (!password) {
+      newErrors.password = 'Password is required';
+    } else if (password.length < 6) {
       newErrors.password = 'Password must be at least 6 characters long';
     }
 
