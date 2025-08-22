@@ -1,24 +1,45 @@
 import React, { useState } from 'react';
 
 const RegistrationForm = () => {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    surname: '',
-    username: '',
-    email: '',
-    password: '',
-  });
+  const [firstName, setFirstName] = useState('');
+  const [surname, setSurname] = useState('');
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    // Use individual setter functions based on the input name
+    switch (name) {
+      case 'firstName':
+        setFirstName(value);
+        break;
+      case 'surname':
+        setSurname(value);
+        break;
+      case 'username':
+        setUsername(value);
+        break;
+      case 'email':
+        setEmail(value);
+        break;
+      case 'password':
+        setPassword(value);
+        break;
+      default:
+        break;
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const formData = {
+      firstName,
+      surname,
+      username,
+      email,
+      password,
+    };
     console.log('Form submitted:', formData);
     // Here you can add further logic to handle the form submission
   };
@@ -31,7 +52,7 @@ const RegistrationForm = () => {
           type="text"
           id="firstName"
           name="firstName"
-          value={formData.firstName}
+          value={firstName}
           onChange={handleChange}
           required
         />
@@ -42,7 +63,7 @@ const RegistrationForm = () => {
           type="text"
           id="surname"
           name="surname"
-          value={formData.surname}
+          value={surname}
           onChange={handleChange}
           required
         />
@@ -53,7 +74,7 @@ const RegistrationForm = () => {
           type="text"
           id="username"
           name="username"
-          value={formData.username}
+          value={username}
           onChange={handleChange}
           required
         />
@@ -64,7 +85,7 @@ const RegistrationForm = () => {
           type="email"
           id="email"
           name="email"
-          value={formData.email}
+          value={email}
           onChange={handleChange}
           required
         />
@@ -75,7 +96,7 @@ const RegistrationForm = () => {
           type="password"
           id="password"
           name="password"
-          value={formData.password}
+          value={password}
           onChange={handleChange}
           required
         />
