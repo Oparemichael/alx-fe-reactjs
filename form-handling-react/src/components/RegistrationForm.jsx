@@ -25,24 +25,24 @@ const RegistrationForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-         <div>
-        <label htmlFor="surname">Surname:</label>
+      <div>
+        <label htmlFor="firstName">First name:</label>
         <input
           type="text"
-          id="username"
-          name="username"
-          value={formData.surname}
+          id="firstName"
+          name="firstName"
+          value={formData.firstName}
           onChange={handleChange}
           required
         />
       </div>
-        <div>
-        <label htmlFor="firstName">First name:</label>
+      <div>
+        <label htmlFor="surname">Surname:</label>
         <input
           type="text"
-          id="username"
-          name="username"
-          value={formData.firstName}
+          id="surname"
+          name="surname"
+          value={formData.surname}
           onChange={handleChange}
           required
         />
