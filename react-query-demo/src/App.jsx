@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
-import PostsComponent from './PostsComponent'
+import PostsComponent from './Components/PostsComponent'
 import './App.css'
 
 // Create a client
