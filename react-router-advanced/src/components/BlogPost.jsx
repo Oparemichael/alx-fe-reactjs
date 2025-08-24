@@ -14,8 +14,8 @@ const blogPosts = {
 }
 
 function BlogPost() {
-  const { postId } = useParams()
-  const post = blogPosts[postId]
+  const { id } = useParams() // Changed from postId to id
+  const post = blogPosts[id]
 
   if (!post) {
     return (
@@ -37,9 +37,9 @@ function BlogPost() {
       <div style={{ marginTop: '2rem' }}>
         <h3>More Blog Posts:</h3>
         <ul>
-          {Object.keys(blogPosts).map((id) => (
-            <li key={id}>
-              <Link to={`/blog/${id}`}>{blogPosts[id].title}</Link>
+          {Object.keys(blogPosts).map((postId) => (
+            <li key={postId}>
+              <Link to={`/blog/${postId}`}>{blogPosts[postId].title}</Link>
             </li>
           ))}
         </ul>

@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom'
 import { useState } from 'react'
 import Home from './components/Home'
 import About from './components/About'
-import Profile from './components/Profile'  // Changed from './components/Profile/index'
+import Profile from './components/Profile'
 import ProtectedRoute from './components/ProtectedRoute'
 import BlogPost from './components/BlogPost'
 import Login from './components/Login'
@@ -56,7 +56,7 @@ function App() {
                 </ProtectedRoute>
               } 
             />
-            <Route path="/blog/:postId" element={<BlogPost />} />
+            <Route path="/blog/:id" element={<BlogPost />} /> {/* Changed from :postId to :id */}
             <Route 
               path="/login" 
               element={
