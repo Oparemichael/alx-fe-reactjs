@@ -11,54 +11,53 @@ const fetchPostDetails = async (postId) => {
 }
 
 const PostItem = ({ postId, onBack, posts }) => {
-  // Use cached data if available, otherwise fetch
   const cachedPost = posts?.find((post) => post.id === postId)
 
   const { data: post, isLoading } = useQuery({
     queryKey: ['post', postId],
     queryFn: () => fetchPostDetails(postId),
-    initialData: cachedPost, // Use cached data as initial data
-    enabled: !cachedPost, // Only fetch if not in cache
+    initialData: cachedPost,
+    enabled: !cachedPost,
   })
 
   if (isLoading && !post) {
     return (
-      <div className="post-detail">
-        <button onClick={onBack} className="back-button">
+      <div>
+        <button onClick={onBack}>
           ← Back to List
         </button>
-        <div className="loading">Loading post details...</div>
+        <div>Loading post details...</div>
       </div>
     )
   }
 
   if (!post) {
     return (
-      <div className="post-detail">
-        <button onClick={onBack} className="back-button">
+      <div>
+        <button onClick={onBack}>
           ← Back to List
         </button>
-        <div className="error">Post not found</div>
+        <div>Post not found</div>
       </div>
     )
   }
 
   return (
-    <div className="post-detail">
-      <button onClick={onBack} className="back-button">
+    <div>
+      <button onClick={onBack}>
         ← Back to List
       </button>
       
-      <div className="post-content">
+      <div>
         <h2>{post.title}</h2>
-        <div className="post-meta-detail">
+        <div>
           <span>Post ID: {post.id}</span>
           <span>User ID: {post.userId}</span>
         </div>
-        <p className="post-body">{post.body}</p>
+        <p>{post.body}</p>
       </div>
 
-      <div className="cache-note">
+      <div>
         {cachedPost ? (
           <p>✅ This data was loaded from cache instantly!</p>
         ) : (
