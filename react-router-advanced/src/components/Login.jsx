@@ -8,7 +8,6 @@ function Login({ onLogin }) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // Simple authentication simulation
     if (credentials.username && credentials.password) {
       onLogin()
     }
