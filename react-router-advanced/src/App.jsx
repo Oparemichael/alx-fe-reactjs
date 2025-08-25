@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom'
-import { useState } from 'react'
+import { useAuth } from './hooks/useAuth'
 import Home from './components/Home'
 import About from './components/About'
 import Profile from './components/Profile'
@@ -9,15 +9,7 @@ import Login from './components/Login'
 import './App.css'
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
-
-  const handleLogin = () => {
-    setIsAuthenticated(true)
-  }
-
-  const handleLogout = () => {
-    setIsAuthenticated(false)
-  }
+  const { isAuthenticated, login, logout } = useAuth()
 
   return (
     <BrowserRouter>
@@ -33,7 +25,7 @@ function App() {
               <li><Link to="/blog/post-2">Blog Post 2</Link></li>
               {isAuthenticated ? (
                 <li>
-                  <button onClick={handleLogout} className="logout-btn">
+                  <button onClick={logout} className="logout-btn">
                     Logout
                   </button>
                 </li>
@@ -51,18 +43,18 @@ function App() {
             <Route 
               path="/profile/*" 
               element={
-                <ProtectedRoute isAuthenticated={isAuthenticated}>
+                <ProtectedRoute>
                   <Profile />
                 </ProtectedRoute>
               } 
             />
-            <Route path="/blog/:id" element={<BlogPost />} /> {/* Changed from :postId to :id */}
+            <Route path="/blog/:id" element={<BlogPost />} />
             <Route 
               path="/login" 
               element={
                 isAuthenticated ? 
                 <Navigate to="/profile" replace /> : 
-                <Login onLogin={handleLogin} />
+                <Login onLogin={login} />
               } 
             />
             <Route path="*" element={<div>404 - Page Not Found</div>} />
