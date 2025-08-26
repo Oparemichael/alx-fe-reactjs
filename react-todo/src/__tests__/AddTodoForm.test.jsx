@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import AddTodoForm from '../AddTodoForm';
+import AddTodoForm from '../components/AddTodoForm';
 
 describe('AddTodoForm Component', () => {
   test('calls onAdd with input value when form is submitted', () => {
