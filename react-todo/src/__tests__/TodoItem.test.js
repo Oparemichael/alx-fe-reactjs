@@ -24,8 +24,9 @@ describe('TodoItem Component', () => {
     expect(screen.getByText('Test Todo')).toBeInTheDocument();
   });
 
-  test('calls onToggle when clicked', async () => {
+  test('calls onToggle when text is clicked', async () => {
     const user = userEvent.setup();
+    
     render(
       <TodoItem 
         todo={todo} 
@@ -34,12 +35,15 @@ describe('TodoItem Component', () => {
       />
     );
     
-    await user.click(screen.getByTestId('todo-text'));
+    const todoText = screen.getByTestId('todo-text');
+    await user.click(todoText);
+    
     expect(mockToggle).toHaveBeenCalledWith(1);
   });
 
   test('calls onDelete when delete button is clicked', async () => {
     const user = userEvent.setup();
+    
     render(
       <TodoItem 
         todo={todo} 
@@ -48,11 +52,13 @@ describe('TodoItem Component', () => {
       />
     );
     
-    await user.click(screen.getByTestId('delete-button'));
+    const deleteButton = screen.getByTestId('delete-button');
+    await user.click(deleteButton);
+    
     expect(mockDelete).toHaveBeenCalledWith(1);
   });
 
-  test('shows completed style when todo is completed', () => {
+  test('applies completed style when todo is completed', () => {
     const completedTodo = { ...todo, completed: true };
     
     render(
@@ -63,6 +69,7 @@ describe('TodoItem Component', () => {
       />
     );
     
-    expect(screen.getByTestId('todo-text')).toHaveStyle('text-decoration: line-through');
+    const todoText = screen.getByTestId('todo-text');
+    expect(todoText).toHaveStyle('text-decoration: line-through');
   });
 });
