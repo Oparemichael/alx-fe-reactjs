@@ -1,7 +1,6 @@
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
-import TodoItem from '../components/TodoItem';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import TodoItem from '../TodoItem';
 
 describe('TodoItem Component', () => {
   const mockToggle = jest.fn();
@@ -25,7 +24,8 @@ describe('TodoItem Component', () => {
     expect(screen.getByText('Test Todo')).toBeInTheDocument();
   });
 
-  test('calls onToggle when clicked', () => {
+  test('calls onToggle when clicked', async () => {
+    const user = userEvent.setup();
     render(
       <TodoItem 
         todo={todo} 
@@ -34,11 +34,12 @@ describe('TodoItem Component', () => {
       />
     );
     
-    fireEvent.click(screen.getByText('Test Todo'));
+    await user.click(screen.getByTestId('todo-text'));
     expect(mockToggle).toHaveBeenCalledWith(1);
   });
 
-  test('calls onDelete when delete button is clicked', () => {
+  test('calls onDelete when delete button is clicked', async () => {
+    const user = userEvent.setup();
     render(
       <TodoItem 
         todo={todo} 
@@ -47,7 +48,7 @@ describe('TodoItem Component', () => {
       />
     );
     
-    fireEvent.click(screen.getByText('Delete'));
+    await user.click(screen.getByTestId('delete-button'));
     expect(mockDelete).toHaveBeenCalledWith(1);
   });
 
@@ -62,6 +63,6 @@ describe('TodoItem Component', () => {
       />
     );
     
-    expect(screen.getByText('Test Todo')).toHaveStyle('text-decoration: line-through');
+    expect(screen.getByTestId('todo-text')).toHaveStyle('text-decoration: line-through');
   });
 });
